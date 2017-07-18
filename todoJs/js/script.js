@@ -33,12 +33,19 @@ function remove() {
     return false;
 }
 
+function addEnter(ele) {
+    if (event.keyCode == 13) {
+        add();
+    }
+}
+
+
 function show() {
     var todos = getTodos();
 
     var html = '<ul class="list-group">';
     for (var i = 0; i < todos.length; i++) {
-        html += '<li class="list-group-item">' + todos[i] + '<button class="btn btn-link remove" id="' + i + '"><i class="fa fa-times" aria-hidden="true"></i></button></li>';
+        html += '<li class="list-group-item">' +  todos[i] + '<span class="btn btn-link remove" id="' + i + '"><i class="fa fa-times" aria-hidden="true"></i></span></li>';
     };
     html += '</ul>';
 
@@ -50,10 +57,10 @@ function show() {
     };
     var list = document.querySelector('ul');
     list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
 }
 
 

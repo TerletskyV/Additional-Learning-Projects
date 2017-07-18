@@ -1,13 +1,14 @@
-html, .container-fluid {
+body {
 	background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/absurdidad.png);
 }
 
-ul li button {
-	float: right;
+.remove {
+    float: right;
 }
+
 ul li {
-	overflow: hidden;
-}
+   overflow: hidden;
+    }
 
 ul li:hover {
     background: #ddd;
@@ -19,6 +20,7 @@ ul li.checked {
     color: #fff;
 	text-decoration: line-through;
 }
+
 ul li.checked::before {
     content: '';
     position: absolute;
