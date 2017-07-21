@@ -1,5 +1,5 @@
 function getTodos() {
-    var todos = new Array;
+    var todos = new Array();
     var todosStr = localStorage.getItem('todo');
     if (todosStr !== null) {
         todos = JSON.parse(todosStr);
@@ -13,7 +13,10 @@ function add() {
         alert("You must write something!");
     } else {
         var todos = getTodos();
-        todos.push(task);
+        var todosData = {};
+        todosData.text = task;
+        todosData.checked = false;
+        todos.push(todosData);
         localStorage.setItem('todo', JSON.stringify(todos));
 
         show();
@@ -38,6 +41,16 @@ function addEnter(ele) {
         add();
     }
 }
+function check() {
+    var todos = getTodos();
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+            todos.checked = true
+        }
+    }, false);
+}
 
 
 function show() {
@@ -45,7 +58,8 @@ function show() {
 
     var html = '<ul class="list-group">';
     for (var i = 0; i < todos.length; i++) {
-        html += '<li class="list-group-item">' +  todos[i] + '<span class="btn btn-link remove" id="' + i + '"><i class="fa fa-times" aria-hidden="true"></i></span></li>';
+        html += '<li class="list-group-item">' + todos[i].text + '<span class="text-danger remove" id="' + i + '"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></span></li>';
+        
     };
     html += '</ul>';
 
@@ -55,12 +69,8 @@ function show() {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', remove);
     };
-    var list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-        if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
-        }
-    }, false);
+
+    check();
 }
 
 
