@@ -13,16 +13,18 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<form  class="form-inline" onkeypress="return event.keyCode != 13" >
-						<input class="form-control" type="text" placeholder="What to do?" id="task" onkeydown="addEnter(this);"/>
-						<button type="button" class="btn btn-primary form-control" id="add">Add</button>
+					<form  class="form-inline" id="todoForm" >
+						<input class="form-control" type="text" name="todo" placeholder="What to do?" id="todoInput"/>
+						<button type="submit" class="btn btn-primary form-control" id="add">Add</button>
 					</form>
 					<hr>
 					<div id="todos"></div>
 				</div>
 			</div>
 		</div>
-		<script src="js/script.js"></script>
+		<script src="js/my_storage.js"></script>
+		<script src="js/my_todos.js"></script>
+		<script src="js/main.js"></script>
 		<link rel="stylesheet" href="css/main.css">
 	</body>
 </html>
